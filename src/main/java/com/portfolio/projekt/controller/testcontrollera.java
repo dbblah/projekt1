@@ -5,12 +5,15 @@ import com.portfolio.projekt.service.PiwkoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @RestController
+
+        @RequestMapping("test")
 public class testcontrollera {
     PiwkoService piwkoService;
 
@@ -19,7 +22,7 @@ public class testcontrollera {
     public String test(){
         return "HelloWorld";
     }
-    @GetMapping("/piwko")
+    @GetMapping("/get1")
     public ResponseEntity<Piwko> piwko(@RequestParam String nazwa){
         Optional<Piwko>abc=piwkoService.pobierzPiwko(nazwa);
 
