@@ -1,9 +1,9 @@
 package com.portfolio.projekt.controller;
 
 
-import com.portfolio.projekt.model.Adress;
+import com.portfolio.projekt.model.Address;
 
-import com.portfolio.projekt.service.AdressService;
+import com.portfolio.projekt.service.AddressService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +20,17 @@ import java.util.Optional;
  * Klasa wystawiająca API dla adresów
  */
 @RestController
-@RequestMapping("adresy")
-public class AdresController {
+@RequestMapping("addresses")
+public class AddresController {
 
-    AdressService adressService;
+    AddressService addressService;
 
     /**
      *
      * @return wszystkie adresy jako lista adresów
      */
     @GetMapping
-    public ResponseEntity<List<Adress>>getAll(){
+    public ResponseEntity<List<Address>>getAll(){
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.I_AM_A_TEAPOT);
     }
 
@@ -41,10 +41,10 @@ public class AdresController {
      * @return
      */
     @GetMapping("/get1")
-    public ResponseEntity<Adress> get(@RequestParam String nazwa){
-        Optional<Adress>abc= adressService.pobierzAdres(nazwa);
+    public ResponseEntity<Address> get(@RequestParam String nazwa){
+        Optional<Address>abc= addressService.pobierzAdres(nazwa);
         if (abc.isPresent()){
-            return new ResponseEntity<Adress>(abc.get(), null, HttpStatus.OK);
+            return new ResponseEntity<Address>(abc.get(), null, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
